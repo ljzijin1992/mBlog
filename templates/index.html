@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block context %}
+{% for article in article_list %}
+
+        <a href="{% url 'blog:detail' article.id %}"><h2>{{ article.title }}</h2></a>
+        <p>{{ article.stime }}|标签:{{ article.tags.all|join:',' }}</p>
+        <li>{{ article.body }}</li>
+{% endfor %}
+{% endblock %}

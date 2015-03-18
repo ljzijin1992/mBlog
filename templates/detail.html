@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block context %}
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.stime }}|标签:{{ article.tags.all|join:',' }}</p>
+    <li>{{ article.body }}</li>
+
+
+    {% if comment_list %}
+        <hr>
+        <P3>评论列表</P3>
+        <hr>
+    {% endif %}
+
+    {% for comment in comment_list %}
+        <h3>{{ comment.name }}</h3>
+        <p>{{ comment.stime }}</p>
+        <li>{{ comment.body }}</li>
+    {% endfor %}
+
+    {% if form.errors %}
+        <p style="color:red;">
+        Please correct the error {{ form.errors|pluralize }}below.
+        </p>
+    {% endif %}
+
+    <div>
+    <hr>
+        <label for="comment">提交评论</label>
+    <form action="" name="comment" method="post">
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="提交">
+    </form>
+    </div>
+{% endblock %}
