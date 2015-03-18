@@ -18,6 +18,7 @@ class Article(models.Model):
     body  = models.TextField()
     stime = models.DateTimeField(auto_now=True)
     publish = models.BooleanField(default=True)
+    likes = models.IntegerField(default=0)
 
     tags = models.ManyToManyField(Tag)
 
@@ -28,6 +29,7 @@ class Article(models.Model):
         verbose_name_plural = '博客'
         verbose_name = '博客'
         ordering = ['-stime']
+
 
 class Comment(models.Model):
     name = models.CharField(max_length=150)

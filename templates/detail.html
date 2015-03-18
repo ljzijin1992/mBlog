@@ -5,6 +5,12 @@
     <p>{{ article.stime }}|标签:{{ article.tags.all|join:',' }}</p>
     <li>{{ article.body }}</li>
 
+    <hr>
+    <form action="like.html" name="like" method="post">
+         {{ article.likes }} | <input type="submit" value="赞">
+    </form>
+    <hr>
+
 
     {% if comment_list %}
         <hr>
